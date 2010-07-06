@@ -1,4 +1,6 @@
 Sandbox::Application.routes.draw do |map|
+  match "/signup" , :to =>"users#new"
+
   
   match "/contact" , :to => "pages#contact"
   
