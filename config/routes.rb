@@ -2,9 +2,9 @@ Sandbox::Application.routes.draw do |map|
   
   match "/contact" , :to => "pages#contact"
   
-  get "/about" , :to => "pages#about"
+  match "/about" , :to => "pages#about"
   
-  get "/help" ,:to => "pages#help"
+  match "/help" ,:to => "pages#help"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
