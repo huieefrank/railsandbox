@@ -1,4 +1,5 @@
 Sandbox::Application.routes.draw do |map|
+  resources :users
   match "/signup" , :to =>"users#new"
 
   
