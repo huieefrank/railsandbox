@@ -1,5 +1,8 @@
-Sandbox::Application.routes.draw do |map|
+Sandbox::Application.routes.draw do |map| 
+
   resources :users
+  resources :sessions, :only => [:new, :create, :destroy]
+  
   match "/signup" , :to =>"users#new"
 
   
@@ -8,6 +11,8 @@ Sandbox::Application.routes.draw do |map|
   match "/about" , :to => "pages#about"
   
   match "/help" ,:to => "pages#help"
+  match "/signin" , :to =>'sessions#new'
+  match "/signout" , :to =>'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
