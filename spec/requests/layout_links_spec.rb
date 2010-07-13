@@ -48,15 +48,18 @@ describe "LayoutLinks" do
  end
  
  describe "when signed in" do
- 	before(:each) do
- 		@user =Factory(:user)
- 		visit signin_path
- 		fill_in :email , :with => @user.email
- 		fill_in :password , :with =>@user.password
- 		click_button
- 	end
+ 	
  	
  	it "should have a signout link" do
+ 		lambda do
+				visit signup_path
+				fill_in "Name", :with => "Frank"
+				fill_in "Email", :with => "frank@sina.com"
+				fill_in "Password", :with => "foobar"
+				fill_in "Confirmation", :with => "foobar"
+				click_button
+				response.should render_template('users/show')
+			end.should change(User, :count).by(1)
  		visit root_path
  		response.should have_selector("a", :href =>signout_path , :content =>"Sign out")
  	end
