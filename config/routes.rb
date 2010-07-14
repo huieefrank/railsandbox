@@ -2,6 +2,7 @@ Sandbox::Application.routes.draw do |map|
 
   resources :users
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :microposts, :only => [:create, :destroy]
   
   match "/signup" , :to =>"users#new"
 
