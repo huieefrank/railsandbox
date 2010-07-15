@@ -52,6 +52,21 @@ class UsersController < ApplicationController
 	redirect_to users_path
   end
   
+  def following
+  	@title = "Following"
+  	@user = User.find(params[:id])
+  	@users = @user.following.all.paginate(:page => params[:page])
+  	render 'show_follow'
+  end
+  
+  def followers
+  	@title = "Followers"
+  	@user = User.find(params[:id])
+  	@users = @user.followers.all.paginate(:page => params[:page])
+  	render 'show_follow'
+  end
+  	
+  
   private  
   
   
